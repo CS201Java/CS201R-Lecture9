@@ -1,0 +1,19 @@
+P,Bunny,Bugs,54,none
+P,Sam,Yosemite,68,none
+P,Harris,Kamala,59,Al,dog,Bob,dog,Carl,dog
+P,Jones,Bob,BB,none
+P,Stefani,Gwen,54,none
+S,Einstein,Albert,143,4.9,none
+S,Parsons,Jim,42,4.2,Soft Kitty,cat
+S,Mouse,Mickey,91,3.5,Pete,cat
+S,Duck,Daffy,84,2.5,none
+S,Kenobi,Obiwan,156,4.9,Slither,snake
+S,Squarepants,Spongebob,5,2.3,Gary,snail
+T,Rabbit,Roger,84,20,10.50,Physical Education,Gopher,pig,Sam,dog
+T,Sullivan,James,29,30,15.15,Management,none
+T,Lightyear,Buzz,45,40,20.15,Astronomy,Chatty,bird
+T,Wazowski,Mike,36,35,17.50,Computer Science,Ralph,cat,Carlyse,dog
+E,Mouse,Minne,24,40,15.50,14,none
+D,Pig,Porky,32,30,12,7,none
+E,Dinkley,Velma,25,40,14.50,20.6,Sparky,dog
+E,Griffin,Stewie,1,20,14.50,27.5,none
