@@ -79,7 +79,6 @@ public class Main {
                     System.out.println("Oops...: " + e.getMessage());
                 }
             }
-            System.out.println("Scanner: closing scanner for file input");
 
             //using FileWriter to write to output
             FileWriter fw = new FileWriter("outputFW.txt");
@@ -90,6 +89,8 @@ public class Main {
                 fw.write(p.type + p.fname + p.lname + p.age + "\n");
                 System.out.printf("%-4c %-15s %-15s %5d \n",p.type, p.fname, p.lname, p.age);
             }
+
+            System.out.println("Scanner: closing scanner for file input");
             inputScan.close();
             fw.close();
         }
@@ -129,7 +130,7 @@ public class Main {
                     System.out.println("Oops...: " + e.getMessage());
                 } 
             }     
-            System.out.println("Buffered Reader: closing file input");
+
 
             //using PrintWriter to write to output
             PrintWriter outputPW = new PrintWriter("outputPW.txt");
@@ -139,6 +140,8 @@ public class Main {
                 outputPW.printf("%-4c %-15s %-15s %5d \n",p.type, p.fname, p.lname, p.age);
                 System.out.printf("%-4c %-15s %-15s %5d \n",p.type, p.fname, p.lname, p.age);
             }
+
+            System.out.println("Buffered Reader: closing file input");
             inputBuffer.close();
             outputPW.close();
         }
