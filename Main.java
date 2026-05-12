@@ -38,69 +38,112 @@ public class Main {
             ArrayList<Person> people = new ArrayList<>();
 
             File inFile = new File("people.txt");
-            Scanner scanner = new Scanner(inFile);
-
-            //input values from a file & add to people
-            if (loadArrayList(people, scanner) == -1){
-                System.out.println("Input is not valid");
-            }
+            Scanner inputScan = new Scanner(inFile);
             
-            //CREATE A PRINTWRITER OBJECT & WRITE TO THE OUTPUT FILE
-            for (Person p : people){
-                System.out.printf(p.printPerson());
+            //can do this in a single statement:
+            //Scanner inputScan = new Scanner(new File("people.txt"));
+
+            String inputLine;
+            while (inputScan.hasNextLine()){
+                inputLine = inputScan.nextLine();
+                String[] tokens = inputLine.split(",");
+                try{
+                    int tempAge = Integer.parseInt(tokens[3]);
+                    char tempType = tokens[0].toUpperCase().charAt(0);
+                    if (tempType != 'P' && tempType != 'T' && tempType != 'E' && tempType != 'S'){
+                        throw new TypeException(tempType);
+                    }
+                    else{
+                        Person tempP = new Person(tokens[0].charAt(0), tokens[1], tokens[2], tempAge);
+                        people.add(tempP);
+                    }
+                }
+                catch(NumberFormatException e){
+                    System.out.println("Number format exception: " + e.getMessage());
+                }
+                catch(ArrayIndexOutOfBoundsException e){
+                    System.out.println("Not enough tokens in input file: " + e.getMessage());
+                }
+                catch(Exception e){
+                    System.out.println("Oops...: " + e.getMessage());
+                }
             }
-            System.out.println("Total People: " + Person.totalPeople);
-            scanner.close();
+
+            //using FileWriter to write to output
+            FileWriter fw = new FileWriter("outputFW.txt");
+
+            fw.write("Scanner: Printing People ArrayList\n");
+            System.out.println("Scanner: Printing People ArrayList Using FileWriter");
+            for (Person p : people){
+                fw.write(p.type + p.fname + p.lname + p.age + "\n");
+                System.out.printf("%-4c %-15s %-15s %5d \n",p.type, p.fname, p.lname, p.age);
+            }
+
+            System.out.println("Scanner: closing scanner for file input");
+            inputScan.close();
+            fw.close();
         }
 
         catch (FileNotFoundException e){
             System.out.println("Unable to open file");
             return;
         }
+        catch (Exception e){
+            System.out.println("oops - something went wrong");
+        }
 
+        //EXAMPLE 2: INPUT USING BUFFERED READER (file)
+        System.out.println("\nProcessing using buffered reader");
         
-        //CHECKING UNDERSTANDING
-        Other f = new Other();
-        //System.out.println(f.i);   
-        //System.out.println(f.s);     
-        f.imethod();
-        //f.smethod();
-        Other.smethod();
-        
+        try{
+            BufferedReader inputBuffer = new BufferedReader(new FileReader("people.txt"));
+            String line;
+            while ((line = inputBuffer.readLine()) != null){    
+                String[] tokens = line.split(",");
+                try{
+                    int tempAge = Integer.parseInt(tokens[3]);
+                    char tempType = tokens[0].toUpperCase().charAt(0);
+                    if (tempType != 'P' && tempType != 'T' && tempType != 'E' && tempType != 'S'){
+                        throw new TypeException(tempType);
+                    }
+                    else{
+                        Person tempP = new Person(tokens[0].charAt(0), tokens[1], tokens[2], tempAge);
+                        people.add(tempP);
+                    }
+                }
+                catch(NumberFormatException e){
+                    System.out.println("Number format exception: " + e.getMessage());
+                }
+                catch(ArrayIndexOutOfBoundsException e){
+                    System.out.println("Not enough tokens in input file: " + e.getMessage());
+                }
+                catch(Exception e){
+                    System.out.println("Oops...: " + e.getMessage());
+                } 
+            }     
+
+
+            //using PrintWriter to write to output
+            PrintWriter outputPW = new PrintWriter("outputPW.txt");
+            outputPW.println("Buffered Reader: Printing People ArrayList Using PrintWriter");
+            System.out.println("Buffered Reader: Printing People ArrayList");
+            for (Person p : people){
+                outputPW.printf("%-4c %-15s %-15s %5d \n",p.type, p.fname, p.lname, p.age);
+                System.out.printf("%-4c %-15s %-15s %5d \n",p.type, p.fname, p.lname, p.age);
+            }
+            inputBuffer.close();
+            outputPW.close();
+        }
+        catch (Exception e){
+            System.out.println("oops - something went wrong");
+        }
+        finally {
+            System.out.println("Buffered Read is finished.");
+        }
+        System.out.println("Statement after all is complete");
+
     }
-
-    public static int loadArrayList(ArrayList<Person> people, Scanner input){
-
-        String inputLine;
-        char t;
-        int a;
-        String f, l;
-
  
-        while (input.hasNextLine()){
-            //get the next line of input from the file
-            inputLine = input.nextLine();
-            String[] tokens = inputLine.split(",");
-            //check that the number of tokens includes row & colum
-            if (tokens.length < 4){
-                return -1;
-            } 
-            f = tokens[1];
-            l = tokens[2];
 
-            try{
-                a = Integer.parseInt(tokens[3]);
-                Person newPerson = new Person(f,l,a);
-                people.add(newPerson);
-
-            }
-            catch(NumberFormatException e){
-                System.out.println("Error in the line: " + inputLine);
-            }
-
-       }
-                   
-       return 1;
-    }
 }
 
