@@ -33,7 +33,7 @@ public class Person {
  
 
     //create the print method
-    public String printPerson(){
+    public String toString(){
         String out = String.format("%-15s%-15s%5d\n",fname,lname, age);
         return out;
     }

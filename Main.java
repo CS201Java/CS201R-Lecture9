@@ -1,5 +1,9 @@
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,10 +37,9 @@ public class Main {
         }
 
 
+        //CREATE AN ARRAYLIST OF PERSON OBJECTS
+        ArrayList<Person> people = new ArrayList<>();
         try {
-            //CREATE AN ARRAYLIST OF PERSON OBJECTS
-            ArrayList<Person> people = new ArrayList<>();
-
             File inFile = new File("people.txt");
             Scanner inputScan = new Scanner(inFile);
             
