@@ -4,10 +4,12 @@ public class Person {
     String fname;
     String lname;
     int age;
+    public static int totalPeople = 0;
 
     //NOTE: no modifier indicates only classes in the same
     //      package can instantiate the class
     Person(){
+        type = 'P';
         fname = "";
         lname = "";
         age = 0;
@@ -37,7 +39,5 @@ public class Person {
         String out = String.format("%-15s%-15s%5d\n",fname,lname, age);
         return out;
     }
-
-    public static int totalPeople = 0;
             
 }
