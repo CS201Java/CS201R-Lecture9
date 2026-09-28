@@ -16,7 +16,6 @@ public class Person {
         totalPeople++;
     }
 
-    //EXAMPLE 1 b) add overloaded constructor
     Person(String f, String l, int a){
         type = 'P';
         fname = f;
@@ -24,6 +23,8 @@ public class Person {
         age = a;
         totalPeople++;
     }
+
+    //EXAMPLE 1 b) add overloaded constructor
 
     //EXAMPLE 1 c)  complete getters & setters
     //create all getters (accessors)

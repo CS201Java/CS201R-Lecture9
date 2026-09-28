@@ -23,9 +23,9 @@ public class Main {
 
         
         //PRINT OBJECTS 
-         System.out.println(p1.printPerson());
-         System.out.println(p2.printPerson());
-         System.out.println(p3.printPerson());
+         System.out.print(p1);
+         System.out.print(p2);
+         System.out.print(p3);
 
         ArrayList<Person> myList = new ArrayList<>();
         myList.add(p1);
@@ -33,7 +33,7 @@ public class Main {
         myList.add(p3);
 
         for (Person p : myList){
-            System.out.print(p.printPerson());
+            System.out.print(p);
         }
 
 
@@ -57,7 +57,8 @@ public class Main {
                         throw new TypeException(tempType);
                     }
                     else{
-                        Person tempP = new Person(tokens[0].charAt(0), tokens[1], tokens[2], tempAge);
+                        //Person tempP = new Person(tokens[0].charAt(0), tokens[1], tokens[2], tempAge);
+                        Person tempP = new Person(tokens[1], tokens[2], tempAge);
                         people.add(tempP);
                     }
                 }
@@ -110,7 +111,8 @@ public class Main {
                         throw new TypeException(tempType);
                     }
                     else{
-                        Person tempP = new Person(tokens[0].charAt(0), tokens[1], tokens[2], tempAge);
+                        //Person tempP = new Person(tokens[0].charAt(0), tokens[1], tokens[2], tempAge);
+                        Person tempP = new Person(tokens[1], tokens[2], tempAge);
                         people.add(tempP);
                     }
                 }
